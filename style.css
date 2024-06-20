@@ -41,6 +41,13 @@ figure {
   margin: 0;
 }
 
+/* 投稿日 */
+time {
+  display: block;
+  color: #666;
+  margin-bottom: 15px;
+}
+
 /* フッターブロック */
 footer {
   padding: 25px 15px;
