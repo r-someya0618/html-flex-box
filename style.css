@@ -3,4 +3,36 @@
 /* ページ全体の設定 */
 body {
   margin: 0;
+  font-family: sans-serif;
+}
+
+/* 記事 */
+article {
+  background-color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+p {
+  line-height: 2;
+}
+
+/* ヘッダーブロック */
+header {
+  padding: 25px 15px;
+}
+
+/* コンテンツブロック */
+div {
+  padding: 40px 15px;
+  background-color: #29abe2;
+}
+
+/* フッターブロック */
+footer {
+  padding: 25px 15px;
+  background-color: #6ac4eb;
 }
