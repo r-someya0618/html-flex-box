@@ -146,6 +146,69 @@ footer {
   font-family: 'Exo 2', sans-serif;
 }
 
+/* トップページ */
+.hero {
+  background-image: url(img/walk.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 532px;
+  color: #fff;
+  font-size: 14px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-family: 'Exo 2', sans-serif;
+  text-shadow: 0 0 10px #444;
+  text-align: center;
+}
+
+.hero p {
+  font-weight: bold;
+  text-shadow: 0 0 10px #444;
+  margin-top: 0;
+}
+
+.hero a {
+  border: solid 2px #fff;
+  padding: 10px 40px;
+  border-radius: 10px;
+  background-color: rgba(41, 171,226, .7);
+  margin-top: 10px;
+}
+
+/* トップページ：記事一覧 */
+.toppost {
+  padding: 15px;
+}
+
+.toppost div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.toppost article {
+  padding: 0;
+  width: 48%;
+  flex: none;
+}
+
+.toppost article:not(:nth-last-child(-n+2)) {
+  margin-bottom: 12px;
+}
+
+.toppost h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
 @media (min-width: 600px) {
   /* PCコンテナ */
   .container {
@@ -172,6 +235,19 @@ footer {
 
   p {
     font-size: 18px;
+  }
+
+  .hero h1 {
+    font-size: 72px;
+  }
+
+  /* トップページ記事一覧 */
+  .toppost article {
+    width: 23%;
+
+  }
+  .toppost article:not(:nth-last-child(-n+2)) {
+    margin-bottom: 0;
   }
 }
 
