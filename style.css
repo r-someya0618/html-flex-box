@@ -230,6 +230,23 @@ td{
   background-color: #e8eef9;
 }
 
+/* お問い合わせページ */
+input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+textarea {
+  height: 120px;
+}
+
+input[type="submit"] {
+  background-color: #ffaa00;
+  border: none;
+  appearance: none;
+}
+
 @media (min-width: 600px) {
   /* PCコンテナ */
   .container {
@@ -269,6 +286,11 @@ td{
   }
   .toppost article:not(:nth-last-child(-n+2)) {
     margin-bottom: 0;
+  }
+
+  /* お問い合わせページ */
+  input[type="submit"] {
+    width: 250px;
   }
 }
 
