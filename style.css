@@ -209,6 +209,27 @@ footer {
   font-size: 14px;
 }
 
+/* サイトについてページ */
+table{
+  border-collapse: collapse;
+}
+
+th,td {
+  border: solid 1px #ccc;
+  padding: 18px;
+}
+
+th {
+  width: 4em;
+  text-align: left;
+  background-color: #135977;
+  color: #fff;
+}
+
+td{
+  background-color: #e8eef9;
+}
+
 @media (min-width: 600px) {
   /* PCコンテナ */
   .container {
