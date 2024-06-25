@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Sample</title>
+    <style>
+      .grow-container {
+        display: flex;
+        border: 1px solid #000;
+      }
+
+      .item {
+        padding: 15px;
+        font-size: 14px;
+      }
+      .item1 {
+        background: aquamarine;
+        flex-grow: 1; /* flexコンテナのあまりを分配してコンテナのあまりを埋める */
+      }
+      .item2 {
+        background-color: bisque;
+        flex-grow: 1;
+      }
+      .item3 {
+        background-color: blueviolet;
+        flex-grow: 1;
+      }
+      .grow-container2 {
+        display: flex;
+        border: 1px solid #000;
+      }
+
+      .grow-container2 .item1 {
+        background: aquamarine;
+        flex-grow: 1;
+      }
+      .grow-container2 .item2 {
+        background-color: bisque;
+        flex-grow: 2;
+      }
+      .grow-container2 .item3-2 {
+        background-color: blueviolet;
+        /* flex-grow: 0; */
+      }
+
+      .s-container1 {
+        display: flex;
+        width: 500px;
+        background-color: darkgrey;
+        border: 1px solid #000;
+
+        .s-item1 {
+          flex-shrink: 1;
+          background: aquamarine;
+          width: 200px;
+        }
+        .s-item2 {
+          flex-shrink: 1;
+          background: bisque;
+          width: 200px;
+        }
+        .s-item3 {
+          flex-shrink: 0;
+          background: blueviolet;
+          width: 200px;
+        }
+      }
+
+      .b-container1 {
+        display: flex;
+        width: 800px;
+        background-color: darkgrey;
+        /* border: 1px solid #000; */
+
+        .b-item1 {
+          background: aquamarine;
+          flex-basis: 40%;
+        }
+        .b-item2 {
+          background: bisque;
+          flex-basis: 40%;
+        }
+        .b-item3 {
+          background: blueviolet;
+          /* flex-basis: 50%; */
+        }
+      }
+      .b-container2 {
+        display: flex;
+        width: 800px;
+        background-color: darkgrey;
+
+        .b-item1 {
+          background: aquamarine;
+          flex-basis: 40%;
+          flex-shrink: 2;
+        }
+        .b-item2 {
+          background: bisque;
+          flex-basis: 40%;
+          flex-shrink: 1;
+        }
+        .b-item3 {
+          background: blueviolet;
+          flex-basis: 50%;
+          flex-shrink: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-growとflex-shrink</h1>
+    <p>
+      display:flexを指定した親要素であるflexコンテナに対し、flex-growを子要素に指定した場合は幅に余剰がある場合は子要素を拡張してコンテナを埋める。<br />
+      flex-shrinkを指定した場合は、子要素がflexコンテナからはみ出すような状況の場合に、flexコンテナに収まるように子要素の幅を縮小してコンテナ幅に収める。<br />
+      例は固定幅なので意味ないが、レスポンシブのレイアウトなどに有効。
+    </p>
+    <h1>flex-grow</h1>
+    <p>
+      子要素にflex-growを設定すると、設定された子要素に対しflexコンテナの余っている範囲を分配し、コンテナいっぱいに子要素が拡張される
+    </p>
+    <p>
+      以下の場合は、3つの子要素に対して1:1:１の割合でflexコンテナの余剰分を割り振りコンテナいっぱいになる。
+    </p>
+    <pre>
+      .grow-container {
+        display: flex;
+      }
+
+      .item {
+        padding: 15px;
+        font-size: 14px;
+      }
+      .item1 {
+        background: aquamarine;
+        flex-grow: 1;
+      }
+      .item2 {
+        background-color: bisque;
+        flex-grow: 1;
+      }
+      .item3 {
+        background-color: blueviolet;
+        flex-grow: 1;
+      }
+    </pre>
+    <div class="grow-container">
+      <div class="item item1">item1</div>
+      <div class="item item2">item2</div>
+      <div class="item item3">item3</div>
+    </div>
+
+    <p>
+      以下の場合は、3つの子要素に対して1:2:0の割合でflexコンテナの余剰分を割り振りコンテナいっぱいになる。<br />
+      0を指定(デフォルト値は0)した場合は、要素の中身に即したサイズになり、残りの2つのflex-growで指定された比率でコンテナいっぱいとなる
+    </p>
+    <pre>
+      .grow-container2 {
+        display: flex;
+      }
+
+      .item {
+        padding: 15px;
+        font-size: 14px;
+      }
+      .item1 {
+        background: aquamarine;
+        flex-grow: 1;
+      }
+      .item2 {
+        background-color: bisque;
+        flex-grow: 2;
+      }
+      .item3 {
+        background-color: blueviolet;
+        flex-grow: 0;
+      }
+    </pre>
+    <div class="grow-container2">
+      <div class="item item1">item1</div>
+      <div class="item item2">item2</div>
+      <div class="item item3-2">item3</div>
+    </div>
+
+    <h1>flex-shrink</h1>
+    <p>
+      子要素にflex-shrinkを設定すると、設定された子要素が親要素のflexコンテナからはみ出すサイズの場合に、子要素の幅がコンテナ不足している範囲を分配し、コンテナに収まるように子要素が縮小される
+    </p>
+    <p>
+      以下の場合は、幅500pxのflexコンテナに対して、子要素3つが入り切らない状況で、flex-shrinkが1を設定してある要素が2つ、0が設定してある要素が一つのケース。
+      flex-shrink:1が設定してある2つの要素で、フレックスコンテナに対して幅が足りない分縮小して収まるようにしている。
+      また、0の場合はflex-shrinkが効かない状態なので、縮小せず200pxの固定幅となる。
+    </p>
+    <pre>
+      .s-container1 {
+        display: flex;
+        width: 500px;
+        background-color: darkgrey;
+
+        .s-item1 {
+          flex-shrink: 1;
+          background: aquamarine;
+          width: 200px;
+        }
+        .s-item2 {
+          flex-shrink: 1;
+          background: bisque;
+          width: 200px;
+        }
+        .s-item3 {
+          flex-shrink: 0;
+          background: blueviolet;
+          width: 200px;
+        }
+      }
+    </pre>
+    <div class="s-container1">
+      <div class="item s-item1">item1</div>
+      <div class="item s-item2">item2</div>
+      <div class="item s-item3">item3</div>
+    </div>
+    <h1>flex-basis</h1>
+    <p>
+      子要素にflex-basisを設定すると、設定された子要素がflexコンテナに占める幅（px、%）を設定できる。
+      子要素3つのうち2つにflex-basis:40%が設定されていた場合、flexコンテナの余白は20%となる。
+    </p>
+    <pre>
+      .b-container1 {
+        display: flex;
+        width: 800px;
+        background-color: darkgrey;
+
+        .b-item1 {
+          background: aquamarine;
+          flex-basis: 40%;
+        }
+        .b-item2 {
+          background: bisque;
+          flex-basis: 40%;
+        }
+        .b-item3 {
+          background: blueviolet;
+        }
+      }
+    </pre>
+    <div class="b-container1">
+      <div class="item b-item1">item1</div>
+      <div class="item b-item2">item2</div>
+      <div class="item b-item3">item3</div>
+    </div>
+    <p>
+      以下の場合は、はみ出した分(30%はみ出す)の2/4をitem1が1/4づつをitem2とitem3が受け持ち縮小する。
+      各要素の幅はflex-basisの% - 縮小する%となる
+    </p>
+    <pre>
+      .b-container2 {
+        display: flex;
+        width: 800px;
+        background-color: darkgrey;
+
+        .b-item1 {
+          background: aquamarine;
+          flex-basis: 40%;
+          flex-shrink: 2;
+        }
+        .b-item2 {
+          background: bisque;
+          flex-basis: 40%;
+          flex-shrink: 1;
+        }
+        .b-item3 {
+          background: blueviolet;
+          flex-basis: 50%;
+          flex-shrink: 1;
+        }
+      }
+    </pre>
+    <div class="b-container2">
+      <div class="item b-item1">item1</div>
+      <div class="item b-item2">item2</div>
+      <div class="item b-item3">item3</div>
+    </div>
+  </body>
+</html>
